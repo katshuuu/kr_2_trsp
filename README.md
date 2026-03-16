@@ -41,7 +41,7 @@ kr_2_trsp/
 ## 1. Клонировать репозиторий
 
 ```bash
-git clone <url репозитория>
+git clone https://github.com/katshuuu/kr_2_trsp.git
 cd kr_2_trsp
 ````
 
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 ---
 
-# 4. Запустить приложение
+# 4. Запук приложения
 
 ```bash
 uvicorn main:app --reload
