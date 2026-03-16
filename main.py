@@ -1,4 +1,7 @@
-from fastapi import FastAPI
+# -*- coding: utf-8 -*-
+import json
+from fastapi import FastAPI, Response
+from fastapi.responses import JSONResponse
 from app.task_3_1.routes import router as task_3_1_router
 from app.task_3_2.routes import router as task_3_2_router
 from app.task_5_1_2_3.routes import router as task_5_router
@@ -12,6 +15,13 @@ app = FastAPI(
     redoc_url="/redoc"
 )
 
+# Заглушки для иконок
+@app.get("/favicon.ico")
+@app.get("/apple-touch-icon.png")
+@app.get("/apple-touch-icon-precomposed.png")
+async def ignore_icons():
+    return Response(status_code=204)
+
 # Подключение маршрутов
 app.include_router(task_3_1_router, tags=["Задание 3.1 - Пользователи"])
 app.include_router(task_3_2_router, tags=["Задание 3.2 - Продукты"])
@@ -21,12 +31,41 @@ app.include_router(headers_router, tags=["Задания 5.4-5.5 - Заголо�
 @app.get("/")
 async def root():
     """
-    Корневой маршрут с информацией о доступных эндпоинтах
+    Root endpoint with information about available endpoints
     """
     return {
+        "message": "Control Work on FastAPI",
+        "student": "Shustalova Ekaterina Mikhailovna",
+        "group": "EFBO-01-24",
+        "documentation": "/docs",
+        "endpoints": {
+            "task_3.1": {
+                "create_user": "POST /create_user - Create user"
+            },
+            "task_3.2": {
+                "get_product": "GET /product/{id} - Get product by ID",
+                "search_products": "GET /products/search - Search products"
+            },
+            "task_5.1-5.3": {
+                "login": "POST /auth/login - Login",
+                "login_v2": "POST /auth/login_v2 - Improved login",
+                "user": "GET /auth/user - User profile",
+                "profile": "GET /auth/profile - Profile with session extension"
+            },
+            "task_5.4-5.5": {
+                "headers_simple": "GET /headers_simple - Simple headers",
+                "headers": "GET /headers - Headers via Pydantic",
+                "info": "GET /info - Info with headers"
+            }
+        }
+    }
+    """
+    Корневой маршрут с информацией о доступных эндпоинтах
+    """
+    response_data = {
         "message": "Контрольная работа по FastAPI",
-        "student": "[Ваше ФИО]",
-        "group": "[Номер группы]",
+        "student": "Шусталова Екатерина Михайловна",
+        "group": "ЭФБО-01-24",
         "documentation": "/docs",
         "endpoints": {
             "task_3.1": {
@@ -49,3 +88,7 @@ async def root():
             }
         }
     }
+    
+    # Явно устанавливаем кодировку
+    json_str = json.dumps(response_data, ensure_ascii=False)
+    return JSONResponse(content=json.loads(json_str))

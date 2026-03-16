@@ -84,7 +84,7 @@ async def get_headers_pydantic(headers: CommonHeaders = Depends()):
     summary="Информация с заголовками (задание 5.5)",
     description="Возвращает информацию и заголовки с серверным временем"
 )
-async def get_info(headers: CommonHeaders = Depends(), response: Response):
+async def get_info(response: Response, headers: CommonHeaders = Depends()):
     """
     Задание 5.5: Расширенный маршрут с дополнительной информацией
     

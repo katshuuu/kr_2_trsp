@@ -1,5 +1,5 @@
-from fastapi import APIRouter, HTTPException, status
-from .models import UserCreate
+from fastapi import APIRouter, status  # Убрали HTTPException если не используется
+from .models import UserCreate  # EmailStr больше не импортируется
 
 router = APIRouter()
 
@@ -8,25 +8,7 @@ router = APIRouter()
     response_model=UserCreate,
     status_code=status.HTTP_200_OK,
     summary="Создание пользователя",
-    description="Принимает данные пользователя и возвращает их после валидации",
-    responses={
-        200: {
-            "description": "Успешное создание пользователя",
-            "content": {
-                "application/json": {
-                    "example": {
-                        "name": "Alice",
-                        "email": "alice@example.com",
-                        "age": 30,
-                        "is_subscribed": True
-                    }
-                }
-            }
-        },
-        422: {
-            "description": "Ошибка валидации данных"
-        }
-    }
+    description="Принимает данные пользователя и возвращает их после валидации"
 )
 async def create_user(user: UserCreate):
     """

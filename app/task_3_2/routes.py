@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException, Query, status
+from fastapi import APIRouter, HTTPException, Query, Path, status  # Добавлен Path
 from typing import Optional, List
 from .data import sample_products
 
@@ -61,17 +61,18 @@ async def search_products(
     description="Возвращает информацию о продукте по его идентификатору"
 )
 async def get_product(
-    product_id: int = Query(
+    product_id: int = Path(  # Исправлено: Query -> Path
         ..., 
         description="Идентификатор продукта",
-        example=123
+        example=123,
+        ge=1  # Добавлена валидация: product_id должен быть >= 1
     )
 ):
     """
     Задание 3.2: Получение продукта по ID
     
     **Параметры пути:**
-    - **product_id**: идентификатор продукта (целое число)
+    - **product_id**: идентификатор продукта (целое число, >= 1)
     
     **Возвращает:** информацию о продукте
     

@@ -18,7 +18,7 @@
 
 ```
 
-fastapi-control-work/
+kr_2_trsp/
 │
 ├── app/
 │   ├── task_3_1/        # Задание 3.1 - Создание пользователя
@@ -42,7 +42,7 @@ fastapi-control-work/
 
 ```bash
 git clone <url репозитория>
-cd fastapi-control-work
+cd kr_2_trsp
 ````
 
 ---
