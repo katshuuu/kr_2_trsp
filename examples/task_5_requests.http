@@ -1,0 +1,43 @@
+### Задание 5.1: Вход в систему (базовый)
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "user123",
+    "password": "password123"
+}
+
+### Задание 5.1: Получение профиля
+GET http://localhost:8000/auth/user
+Cookie: session_token=user123
+
+### Задание 5.2: Вход с подписью
+POST http://localhost:8000/auth/login_v2
+Content-Type: application/json
+
+{
+    "username": "user123",
+    "password": "password123"
+}
+
+### Задание 5.3: Вход с расширенной сессией
+POST http://localhost:8000/auth/login_v3
+Content-Type: application/json
+
+{
+    "username": "user123",
+    "password": "password123"
+}
+
+### Задание 5.3: Получение профиля с продлением
+GET http://localhost:8000/auth/profile
+Cookie: session_token=<token_from_login_v3>
+
+### Задание 5.1: Ошибка - неверный пароль
+POST http://localhost:8000/auth/login
+Content-Type: application/json
+
+{
+    "username": "user123",
+    "password": "wrongpassword"
+}

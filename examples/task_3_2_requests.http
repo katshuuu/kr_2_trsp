@@ -1,0 +1,17 @@
+### Задание 3.2: Получение продукта по ID
+GET http://localhost:8000/product/123
+
+### Задание 3.2: Продукт не найден
+GET http://localhost:8000/product/999
+
+### Задание 3.2: Поиск продуктов по ключевому слову
+GET http://localhost:8000/products/search?keyword=phone&limit=5
+
+### Задание 3.2: Поиск с фильтром по категории
+GET http://localhost:8000/products/search?keyword=phone&category=Electronics&limit=5
+
+### Задание 3.2: Поиск с ограничением результатов
+GET http://localhost:8000/products/search?keyword=a&limit=2
+
+### Задание 3.2: Поиск без результатов
+GET http://localhost:8000/products/search?keyword=xylophone

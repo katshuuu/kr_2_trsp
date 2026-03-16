@@ -1,0 +1,39 @@
+### Задание 3.1: Создание пользователя (полные данные)
+POST http://localhost:8000/create_user
+Content-Type: application/json
+
+{
+    "name": "Alice",
+    "email": "alice@example.com",
+    "age": 30,
+    "is_subscribed": true
+}
+
+### Задание 3.1: Создание пользователя (минимальные данные)
+POST http://localhost:8000/create_user
+Content-Type: application/json
+
+{
+    "name": "Bob",
+    "email": "bob@example.com"
+}
+
+### Задание 3.1: Ошибка - неверный email
+POST http://localhost:8000/create_user
+Content-Type: application/json
+
+{
+    "name": "Charlie",
+    "email": "not-an-email",
+    "age": 25
+}
+
+### Задание 3.1: Ошибка - отрицательный возраст
+POST http://localhost:8000/create_user
+Content-Type: application/json
+
+{
+    "name": "David",
+    "email": "david@example.com",
+    "age": -5
+}

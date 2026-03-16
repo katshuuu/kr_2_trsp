@@ -1,0 +1,23 @@
+### Задание 5.4: Получение заголовков (простой способ)
+GET http://localhost:8000/headers_simple
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+Accept-Language: en-US,en;q=0.9,es;q=0.8
+
+### Задание 5.4: Ошибка - отсутствует заголовок
+GET http://localhost:8000/headers_simple
+User-Agent: Mozilla/5.0
+
+### Задание 5.5: Получение заголовков через Pydantic
+GET http://localhost:8000/headers
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+Accept-Language: en-US,en;q=0.9,es;q=0.8
+
+### Задание 5.5: Информация с заголовками
+GET http://localhost:8000/info
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36
+Accept-Language: ru-RU,ru;q=0.9,en;q=0.8
+
+### Задание 5.5: Ошибка - неверный формат Accept-Language
+GET http://localhost:8000/headers
+User-Agent: Mozilla/5.0
+Accept-Language: invalid_format
